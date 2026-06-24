@@ -1,21 +1,21 @@
 package com.prlens.webhook.controller;
 
+import com.prlens.webhook.service.GitHubWebHookService;
 import com.prlens.webhook.model.GitHubPullRequestEvent;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/webhook/github")
+@RequestMapping("/webhooks/github")
 public class GithubWebhookController {
-    private final KafkaTemplate<String, GitHubPullRequestEvent> kafkaTemplate;
+    private final GitHubWebHookService gitHubWebHookService;
 
-    public GithubWebhookController(KafkaTemplate<String, GitHubPullRequestEvent> kafkaTemplate) {
-        this.kafkaTemplate = kafkaTemplate;
+    public GithubWebhookController(GitHubWebHookService gitHubWebHookService) {
+        this.gitHubWebHookService = gitHubWebHookService;
     }
 
     @PostMapping
     public String receiveWebhook(@RequestBody GitHubPullRequestEvent event) {
-        kafkaTemplate.send("pr-events", event.repository(), event);
-        return  "ok";
+        gitHubWebHookService.handlePullRequestEvent(event);
+        return "ok";
     }
 }
