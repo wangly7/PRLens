@@ -1,6 +1,6 @@
 package com.prlens.webhook.service;
 
-import com.prlens.webhook.model.GitHubPullRequestEvent;
+import com.prlens.common.events.GitHubPullRequestEvent;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 

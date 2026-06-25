@@ -1,7 +1,7 @@
 package com.prlens.webhook.controller;
 
 import com.prlens.webhook.service.GitHubWebHookService;
-import com.prlens.webhook.model.GitHubPullRequestEvent;
+import com.prlens.common.events.GitHubPullRequestEvent;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
