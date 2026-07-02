@@ -4,6 +4,13 @@
 
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>4.1.0</version>
+        <relativePath/>
+    </parent>
+
     <groupId>com.prlens</groupId>
     <artifactId>prlens-backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -11,7 +18,12 @@
 
     <modules>
         <module>webhook-service</module>
-        <module>analysis-service</module>
+        <module>workflow-service</module>
+        <module>issue-service</module>
         <module>common</module>
+        <module>doc-agent</module>
+        <module>ai-review-worker</module>
+        <module>coding-agent</module>
+        <module>issue-service</module>
     </modules>
 </project>
