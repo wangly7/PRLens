@@ -1,0 +1,14 @@
+$kind: http-request
+name: localhost:8081/issues
+url: localhost:8081/issues
+method: POST
+body:
+  type: json
+  content: |-
+    {
+      "title":"Support OAuth Login",
+      "description":"Need OAuth2 login support",
+      "repository":"prlens",
+      "createdBy":"liangyuan"
+    }
+order: 1783303529690

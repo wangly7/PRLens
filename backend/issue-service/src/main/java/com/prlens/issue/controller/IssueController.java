@@ -23,7 +23,7 @@ public class IssueController {
     public ResponseEntity<IssueCreatedEvent> createIssue(
         @RequestBody CreateIssueRequest request
     ){
-        IssueCreatedEvent event = issueService.createdEvent((request));
+        IssueCreatedEvent event = issueService.createdEvent(request);
         return  ResponseEntity.accepted().body(event);
     }
 }

@@ -1,0 +1,5 @@
+com/prlens/common/enums/DocJobType.class
+com/prlens/common/events/DocJobEvent.class
+com/prlens/common/constants/KafkaTopics.class
+com/prlens/common/events/IssueCreatedEvent.class
+com/prlens/common/events/GitHubPullRequestEvent.class
