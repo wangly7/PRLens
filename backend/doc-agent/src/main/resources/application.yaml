@@ -1,3 +1,25 @@
+server:
+  port: 8083
 spring:
   application:
     name: doc-agent
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: doc-agent
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics
+
+doc-agent:
+  output-dir: ./docs/generated/design-docs

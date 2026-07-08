@@ -2,9 +2,11 @@ package com.prlens.workflow.producer;
 
 import com.prlens.common.constants.KafkaTopics;
 import com.prlens.common.events.DocJobEvent;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
+@Slf4j
 @Component
 public class DocJobProducer {
     private final KafkaTemplate<String, DocJobEvent> kafkaTemplate;
@@ -14,6 +16,11 @@ public class DocJobProducer {
     }
 
     public void publish(DocJobEvent event) {
+        log.info("Publishing DocJobEvent. topic={}, jobId={}, issueId={}",
+                KafkaTopics.DOC_JOBS,
+                event.jobId(),
+                event.issueId()
+        );
         kafkaTemplate.send(
                 KafkaTopics.DOC_JOBS,
                 event.jobId(),
