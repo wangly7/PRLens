@@ -70,6 +70,7 @@ public class DesignDocAgent {
                     UUID.randomUUID().toString(),
                     UUID.randomUUID().toString(),
                     event.issueId(),
+                    event.repository(),
                     ArtifactType.DESIGN_DOC,
                     filePath.toString(),
                     "doc-agent"
