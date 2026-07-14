@@ -3,6 +3,7 @@ package com.prlens.common.events;
 import com.prlens.common.enums.DocJobType;
 
 public record DocJobEvent(
+        String eventId,
         String jobId,
         String issueId,
         String title,
