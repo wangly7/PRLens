@@ -18,6 +18,8 @@ services:
     container_name: prlens-redis
     ports:
       - "6379:6379"
+    volumes:
+      - redis-data:/data
 
   zookeeper:
     image: confluentinc/cp-zookeeper:7.6.1
@@ -68,5 +70,20 @@ services:
     ports:
       - "5050:80"
 
+  minio:
+    image: minio/minio
+    container_name: prlens-minio
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: prlens
+      MINIO_ROOT_PASSWORD: prlens
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio-data:/data
+
 volumes:
   prlens_postgres_data:
+  redis-data:
+  minio-data:

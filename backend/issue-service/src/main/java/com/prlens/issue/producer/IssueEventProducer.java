@@ -5,6 +5,8 @@ import com.prlens.common.events.IssueCreatedEvent;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.UUID;
+
 @Component
 public class IssueEventProducer {
 
@@ -15,6 +17,6 @@ public class IssueEventProducer {
     }
 
     public void publish(IssueCreatedEvent event) {
-        kafkaTemplate.send(KafkaTopics.ISSUE_EVENTS, event.issueId(), event);
+        kafkaTemplate.send(KafkaTopics.ISSUE_EVENTS, event.issueId().toString(), event);
     }
 }

@@ -1,8 +1,10 @@
 package com.prlens.common.events;
 
+import java.util.UUID;
+
 public record IssueCreatedEvent(
-    String eventId,
-    String issueId,
+    UUID eventId,
+    UUID issueId,
     String title,
     String description,
     String repository,

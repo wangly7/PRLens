@@ -2,12 +2,11 @@ package com.prlens.issue.controller;
 
 import com.prlens.common.events.IssueCreatedEvent;
 import com.prlens.issue.dto.CreateIssueRequest;
+import com.prlens.issue.dto.CreateIssueResponse;
 import com.prlens.issue.service.IssueService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/issues")
@@ -20,10 +19,10 @@ public class IssueController {
     }
 
     @PostMapping
-    public ResponseEntity<IssueCreatedEvent> createIssue(
+    public ResponseEntity<CreateIssueResponse> createIssue(
         @RequestBody CreateIssueRequest request
     ){
-        IssueCreatedEvent event = issueService.createdEvent(request);
-        return  ResponseEntity.accepted().body(event);
+        CreateIssueResponse response = issueService.createIssue(request);
+        return  ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 }

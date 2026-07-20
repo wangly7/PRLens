@@ -10,7 +10,7 @@ public record ArtifactGeneratedEvent(
         String repository,
         ArtifactType artifactType,
         String storagePath,
-        PullRequestSource source
+        String createdByAgent
 ) {
 
 }
